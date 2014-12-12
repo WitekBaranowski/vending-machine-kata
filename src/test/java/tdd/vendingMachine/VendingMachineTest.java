@@ -18,29 +18,37 @@ public class VendingMachineTest {
     @Before
     public void setUp() throws Exception {
         shelfs = new HashMap<>();
-        prepareShelfs(shelfs);
 
     }
 
     @Test
     public void shouldReturnCokeFromShelfIfChosenFirstShelf(){
-
-
+        prepareShelfs(shelfs);
 
         Shelf returnedShelf = shelfs.get(1);
 
         assertThat(returnedShelf).isNotNull();
-        assertThat(returnedShelf).isEqualTo(COKE);
+        assertThat(returnedShelf.getProductType()).isEqualTo(COKE);
 
     }
     @Test
     public void shouldReturnChocolateBarFromShelfIfChosenSecondShelf(){
-
+        prepareShelfs(shelfs);
 
         Shelf returnedShelf = shelfs.get(2);
 
         assertThat(returnedShelf).isNotNull();
-        assertThat(returnedShelf).isEqualTo(CHOCOLATE_BAR);
+        assertThat(returnedShelf.getProductType()).isEqualTo(CHOCOLATE_BAR);
+    }
+
+    @Test
+    public void testAddingItemsToShelf(){
+        prepareShelfs(shelfs);
+
+        shelfs.get(1).addProduct(CHOCOLATE_BAR);
+
+        assertThat(shelfs.get(1).size()).isEqualTo(2);
+
     }
 
 

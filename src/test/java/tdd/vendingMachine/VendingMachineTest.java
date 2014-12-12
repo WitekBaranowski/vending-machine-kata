@@ -15,6 +15,7 @@ public class VendingMachineTest {
     public void shouldReturnCokeFromShelfIfChosenOne(){
         String coke = "coke";
         Map<Integer, String> shelfs = new HashMap<>();
+        shelfs.put(1, coke);
 
         String returnedProduct = shelfs.get(1);
 

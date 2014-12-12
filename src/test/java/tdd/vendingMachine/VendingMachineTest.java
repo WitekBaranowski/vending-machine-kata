@@ -12,7 +12,7 @@ public class VendingMachineTest {
 
 
     @Test
-    public void shouldReturnCokeFromShelfIfChosenOne(){
+    public void shouldReturnCokeFromShelfIfChosenFirstShelf(){
         String coke = "coke";
         Map<Integer, String> shelfs = new HashMap<>();
         shelfs.put(1, coke);
@@ -23,4 +23,17 @@ public class VendingMachineTest {
         assertThat(returnedProduct).isEqualTo(coke);
 
     }
+    @Test
+    public void shouldReturnChocolateBarShelfIfChosenSecondShelf(){
+        String chocolateBar = "chocolate bar";
+        Map<Integer, String> shelfs = new HashMap<>();
+        shelfs.put(1, chocolateBar);
+
+        String returnedProduct = shelfs.get(2);
+
+        assertThat(returnedProduct).isNotNull();
+        assertThat(returnedProduct).isEqualTo(chocolateBar);
+
+    }
+
 }

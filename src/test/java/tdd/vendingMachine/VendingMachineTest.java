@@ -26,8 +26,10 @@ public class VendingMachineTest {
     @Test
     public void shouldReturnChocolateBarShelfIfChosenSecondShelf(){
         String chocolateBar = "chocolate bar";
+        String coke = "coke";
         Map<Integer, String> shelfs = new HashMap<>();
-        shelfs.put(1, chocolateBar);
+        shelfs.put(1, coke);
+        shelfs.put(2, chocolateBar);
 
         String returnedProduct = shelfs.get(2);
 

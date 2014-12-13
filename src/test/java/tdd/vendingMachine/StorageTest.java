@@ -7,6 +7,7 @@ import static tdd.vendingMachine.TestDataConstants.*;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
+import tdd.vendingMachine.exceptions.StorageException;
 
 import java.util.Map;
 

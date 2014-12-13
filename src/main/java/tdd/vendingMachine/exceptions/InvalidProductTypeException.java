@@ -1,4 +1,4 @@
-package tdd.vendingMachine;
+package tdd.vendingMachine.exceptions;
 
 /**
  * Created by Witek on 2014-12-13.

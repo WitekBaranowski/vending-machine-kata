@@ -4,6 +4,7 @@ package tdd.vendingMachine;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
+import tdd.vendingMachine.exceptions.InvalidProductTypeException;
 
 
 import static tdd.vendingMachine.TestDataConstants.*;

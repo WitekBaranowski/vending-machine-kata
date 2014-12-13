@@ -1,6 +1,8 @@
 package tdd.vendingMachine;
 
 
+import tdd.vendingMachine.exceptions.StorageException;
+
 import java.util.Collection;
 import java.util.HashMap;
 

@@ -1,6 +1,8 @@
 package tdd.vendingMachine;
 
 
+import tdd.vendingMachine.exceptions.InvalidProductTypeException;
+
 import java.util.ArrayList;
 import java.util.List;
 

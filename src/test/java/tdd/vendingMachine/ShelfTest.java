@@ -18,21 +18,8 @@ public class ShelfTest {
     public ExpectedException exception = ExpectedException.none();
 
     @Test
-    public void testAddingItemsToShelf(){
-        Shelf shelf = new Shelf(COKE);
-        Product product = new Product(COKE);
-
-
-        shelf.addProduct(product);
-        shelf.addProduct(product);
-
-        assertThat(shelf.size()).isEqualTo(2);
-
-    }
-
-    @Test
     public void testAddingProductToShelf(){
-        Shelf shelf = new Shelf(COKE);
+        Shelf shelf = new Shelf();
         Product product = new Product(COKE);
         Product product2 = new Product(COKE);
 
@@ -44,7 +31,7 @@ public class ShelfTest {
     }
     @Test
     public void testInvalidProductTypeExceptionIsThrownWhenAddingDifferentProductsToShelf(){
-        Shelf shelf = new Shelf(COKE);
+        Shelf shelf = new Shelf();
         Product product = new Product(COKE);
         Product product2 = new Product(CHOCOLATE_BAR);
 
@@ -53,8 +40,8 @@ public class ShelfTest {
         shelf.addProduct(product);
         shelf.addProduct(product2);
 
-
     }
+
 
 
 

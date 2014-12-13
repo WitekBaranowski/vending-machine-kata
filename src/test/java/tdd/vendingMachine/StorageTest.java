@@ -18,7 +18,7 @@ public class StorageTest {
     @Test
     public void testAddingNewShelfToStorageOnGivenPosition(){
         Storage storage = new Storage();
-        Shelf shelfToMount = new Shelf(CHOCOLATE_BAR);
+        Shelf shelfToMount = new Shelf();
 
         storage.mountNewShelfInStorage(CHOCOLATE_BAR_SHELF_NUMBER, shelfToMount);
 
@@ -29,8 +29,8 @@ public class StorageTest {
     @Test
     public void testStorageExceptionIsThrownWhenAddingTwoShelfsOnSamePosition(){
         Storage storage = new Storage();
-        Shelf chocoShelfToMount = new Shelf(CHOCOLATE_BAR);
-        Shelf cokeShelfToMount = new Shelf(COKE);
+        Shelf chocoShelfToMount = new Shelf();
+        Shelf cokeShelfToMount = new Shelf();
 
 
         exception.expect(StorageException.class);
@@ -41,8 +41,8 @@ public class StorageTest {
     }
 
     private void prepareShelfs(Map<Integer, Shelf> shelfs) {
-        shelfs.put(CHOCOLATE_BAR_SHELF_NUMBER, new Shelf(CHOCOLATE_BAR));
-        shelfs.put(COKE_SHELF_NUMBER, new Shelf(COKE));
+        shelfs.put(CHOCOLATE_BAR_SHELF_NUMBER, new Shelf());
+        shelfs.put(COKE_SHELF_NUMBER, new Shelf());
 
     }
 

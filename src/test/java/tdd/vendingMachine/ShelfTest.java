@@ -1,10 +1,9 @@
 package tdd.vendingMachine;
 
-import org.junit.Before;
+
 import org.junit.Test;
 
-import java.util.HashMap;
-import java.util.Map;
+
 import static tdd.vendingMachine.TestDataConstants.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -13,40 +12,18 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class ShelfTest {
 
 
-    private Map<Integer, Shelf> shelfs;
 
-    @Before
-    public void setUp() throws Exception {
-        shelfs = new HashMap<>();
-
-    }
-
-    @Test
-    public void testReturnCokeTypeFromShelfIfChosenFirstShelf(){
-        prepareShelfs(shelfs);
-
-        Shelf returnedShelf = shelfs.get(COKE_SHELF_NUMBER);
-
-        assertThat(returnedShelf).isNotNull();
-        assertThat(returnedShelf.getProductType()).isEqualTo(COKE);
-
-    }
 
     @Test
     public void testAddingItemsToShelf(){
-        prepareShelfs(shelfs);
+        Shelf shelf = new Shelf(COKE);
 
-        shelfs.get(CHOCOLATE_BAR_SHELF_NUMBER).addProduct();
-        shelfs.get(CHOCOLATE_BAR_SHELF_NUMBER).addProduct();
+        shelf.addProduct();
+        shelf.addProduct();
 
-        assertThat(shelfs.get(CHOCOLATE_BAR_SHELF_NUMBER).size()).isEqualTo(2);
-
-    }
-
-
-    private void prepareShelfs(Map<Integer, Shelf> shelfs) {
-        shelfs.put(CHOCOLATE_BAR_SHELF_NUMBER, new Shelf(CHOCOLATE_BAR));
-        shelfs.put(COKE_SHELF_NUMBER, new Shelf(COKE));
+        assertThat(shelf.size()).isEqualTo(2);
 
     }
+
+
 }

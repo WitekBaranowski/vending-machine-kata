@@ -27,7 +27,7 @@ public class ShelfTest {
     }
 
     @Test
-    public void testReturnCokeFromShelfIfChosenFirstShelf(){
+    public void testReturnCokeTypeFromShelfIfChosenFirstShelf(){
         prepareShelfs(shelfs);
 
         Shelf returnedShelf = shelfs.get(COKE_SHELF_NUMBER);
@@ -41,6 +41,7 @@ public class ShelfTest {
     public void testAddingItemsToShelf(){
         prepareShelfs(shelfs);
 
+        shelfs.get(CHOCOLATE_BAR_SHELF_NUMBER).addProduct();
         shelfs.get(CHOCOLATE_BAR_SHELF_NUMBER).addProduct();
 
         assertThat(shelfs.get(CHOCOLATE_BAR_SHELF_NUMBER).size()).isEqualTo(2);

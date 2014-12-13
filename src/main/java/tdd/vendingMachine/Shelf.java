@@ -21,6 +21,6 @@ public class Shelf {
     }
 
     public void addProduct() {
-
+        size++;
     }
 }

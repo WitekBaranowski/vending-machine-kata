@@ -1,9 +1,11 @@
 package tdd.vendingMachine;
 
 
+import java.util.List;
+
 public class Shelf {
     private String productType;
-    private int size;
+    private List<Product> productList;
 
     public Shelf(String productType) {
         this.productType = productType;
@@ -17,11 +19,12 @@ public class Shelf {
         this.productType = productType;
     }
     public int size(){
-        return size;
+        return productList.size();
     }
 
-    public void addProduct() {
-        size++;
+    public void addProduct(Product product) {
+
+
     }
 
 

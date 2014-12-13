@@ -2,11 +2,22 @@ package tdd.vendingMachine;
 
 public class VendingMachine {
 
-    public void enterShelfNumber(int shelfNumber) {
+    private Storage storage;
 
+    private int chosenShelfNumber;
+
+    private String display;
+
+    public VendingMachine(Storage storage) {
+        this.storage = storage;
+    }
+
+    public void enterShelfNumber(int shelfNumberEntered) {
+        chosenShelfNumber = shelfNumberEntered;
+        display = storage.getPriceForShelfNumber(chosenShelfNumber);
     }
 
     public String showDisplay() {
-        return null;
+        return display;
     }
 }

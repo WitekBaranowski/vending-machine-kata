@@ -10,7 +10,13 @@ public class VendingMachineTest {
 
     @Test
     public void testDisplayingProductPriceOnVendingMachine(){
-        VendingMachine vendingMachine = new VendingMachine();
+        Storage storage = new Storage();
+        Shelf shelf = new Shelf();
+        ProductType productType = new ProductType(COKE, new Price(120));
+        Product product = new Product(productType);
+        shelf.addProduct(product);
+        storage.mountNewShelfInStorage(2, shelf);
+        VendingMachine vendingMachine = new VendingMachine(storage);
 
         vendingMachine.enterShelfNumber(2);
         String display = vendingMachine.showDisplay();

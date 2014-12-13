@@ -3,13 +3,13 @@ package tdd.vendingMachine;
 
 public class Product {
 
-    public String productType;
+    public ProductType productType;
 
-    public Product(String productType) {
+    public Product(ProductType productType) {
         this.productType = productType;
     }
 
-    public String getProductType() {
+    public ProductType getProductType() {
         return productType;
     }
 

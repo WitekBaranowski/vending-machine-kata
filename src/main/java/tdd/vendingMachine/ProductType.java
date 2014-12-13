@@ -6,12 +6,31 @@ package tdd.vendingMachine;
 public class ProductType {
 
     private long productPrice;
+    private String name;
 
-    public ProductType(String productType, long productPrice) {
+    public ProductType(String name, long productPrice) {
         this.productPrice = productPrice;
+        this.name = name;
     }
 
     public long getProductPrice() {
         return productPrice;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        ProductType that = (ProductType) o;
+
+        if (!name.equals(that.name)) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return name.hashCode();
     }
 }

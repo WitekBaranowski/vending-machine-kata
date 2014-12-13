@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Shelf {
-    private String productType;
+    private ProductType productType;
     private List<Product> productList;
 
     public Shelf() {

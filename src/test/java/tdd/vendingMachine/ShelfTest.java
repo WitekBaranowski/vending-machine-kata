@@ -17,11 +17,13 @@ public class ShelfTest {
     @Rule
     public ExpectedException exception = ExpectedException.none();
 
+
     @Test
     public void testAddingProductToShelf(){
         Shelf shelf = new Shelf();
-        Product product = new Product(COKE);
-        Product product2 = new Product(COKE);
+        ProductType productType = new ProductType(COKE, 150);
+        Product product = new Product(productType);
+        Product product2 = new Product(productType);
 
         shelf.addProduct(product);
         shelf.addProduct(product2);
@@ -32,8 +34,10 @@ public class ShelfTest {
     @Test
     public void testInvalidProductTypeExceptionIsThrownWhenAddingDifferentProductsToShelf(){
         Shelf shelf = new Shelf();
-        Product product = new Product(COKE);
-        Product product2 = new Product(CHOCOLATE_BAR);
+        ProductType cokeProductType = new ProductType(COKE, 100);
+        ProductType chocolateBarProductType = new ProductType(CHOCOLATE_BAR, 150);
+        Product product = new Product(cokeProductType);
+        Product product2 = new Product(chocolateBarProductType);
 
         exception.expect(InvalidProductTypeException.class);
 

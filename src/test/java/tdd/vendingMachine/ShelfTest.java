@@ -50,7 +50,7 @@ public class ShelfTest {
 
     private void prepareShelfs(Map<Integer, Shelf> shelfs) {
         shelfs.put(CHOCOLATE_BAR_SHELF_NUMBER, new Shelf(CHOCOLATE_BAR));
-        shelfs.put(CHOCOLATE_BAR_SHELF_NUMBER, new Shelf(COKE));
+        shelfs.put(COKE_SHELF_NUMBER, new Shelf(COKE));
 
     }
 }

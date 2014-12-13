@@ -5,17 +5,12 @@ import org.junit.Test;
 
 import java.util.HashMap;
 import java.util.Map;
+import static tdd.vendingMachine.StorageTestConstants.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 
 public class ShelfTest {
-    static String CHOCOLATE_BAR = "chocolate bar";
-    static String COKE = "coke";
-
-
-    static int COKE_SHELF_NUMBER = 1;
-    static int CHOCOLATE_BAR_SHELF_NUMBER = 2;
 
 
     private Map<Integer, Shelf> shelfs;

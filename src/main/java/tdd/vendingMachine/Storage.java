@@ -1,12 +1,12 @@
 package tdd.vendingMachine;
 
 
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
-/**
- * Created by Witek on 2014-12-13.
- */
+
 public class Storage {
     private Map<Integer, Shelf> shelfs;
 
@@ -21,5 +21,14 @@ public class Storage {
 
     public int getNumberOfShelfs() {
         return shelfs.size();
+    }
+
+    public void mountNewShelfInStorage(int shelfSlotNumber, Shelf shelfToMount) {
+        shelfs.put(0, new Shelf("default"));
+
+    }
+
+    public Collection<Shelf> listAllAvailableShelfs() {
+        return shelfs.values();
     }
 }

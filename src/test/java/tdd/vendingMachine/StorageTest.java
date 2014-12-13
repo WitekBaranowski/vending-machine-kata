@@ -31,11 +31,11 @@ public class StorageTest {
         Shelf cokeShelfToMount = new Shelf(COKE);
 
 
+        exception.expect(StorageException.class);
+        exception.expectMessage("There is already mounted shelf at position: "+CHOCOLATE_BAR_SHELF_NUMBER);
+
         storage.mountNewShelfInStorage(CHOCOLATE_BAR_SHELF_NUMBER, chocoShelfToMount);
         storage.mountNewShelfInStorage(CHOCOLATE_BAR_SHELF_NUMBER, cokeShelfToMount);
-
-        exception.expect(StorageException.class);
-        exception.expectMessage("There is already mounted shelf at position:");
     }
 
     

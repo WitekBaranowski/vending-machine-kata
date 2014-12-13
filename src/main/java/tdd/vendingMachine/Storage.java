@@ -20,6 +20,9 @@ public class Storage {
     }
 
     public void mountNewShelfInStorage(int shelfSlotNumber, Shelf shelfToMount) {
+        if(shelfs.containsKey(shelfSlotNumber)){
+            throw new StorageException(String.format("There is already mounted shelf at position: %d", shelfSlotNumber));
+        }
         shelfs.put(shelfSlotNumber, shelfToMount);
 
     }

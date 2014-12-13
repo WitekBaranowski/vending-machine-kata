@@ -5,7 +5,7 @@ import org.junit.Test;
 
 import java.util.HashMap;
 import java.util.Map;
-import static tdd.vendingMachine.StorageTestConstants.*;
+import static tdd.vendingMachine.TestDataConstants.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

@@ -1,15 +1,15 @@
 package tdd.vendingMachine;
 
 
-public final class StorageTestConstants {
-    static String CHOCOLATE_BAR = "chocolate bar";
+public final class TestDataConstants {
     static String COKE = "coke";
+    static String CHOCOLATE_BAR = "chocolate bar";
 
 
     static int COKE_SHELF_NUMBER = 1;
     static int CHOCOLATE_BAR_SHELF_NUMBER = 2;
 
-    private StorageTestConstants(){
+    private TestDataConstants(){
 
         throw new RuntimeException();
     }

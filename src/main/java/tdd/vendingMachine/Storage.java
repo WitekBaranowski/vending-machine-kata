@@ -14,10 +14,6 @@ public class Storage {
         shelfs= new HashMap<>();
     }
 
-    public void mountNewShelfInStorage() {
-        shelfs.put(0, new Shelf("default"));
-
-    }
 
     public int getNumberOfShelfs() {
         return shelfs.size();
@@ -31,4 +27,6 @@ public class Storage {
     public Collection<Shelf> listAllAvailableShelfs() {
         return shelfs.values();
     }
+
+
 }

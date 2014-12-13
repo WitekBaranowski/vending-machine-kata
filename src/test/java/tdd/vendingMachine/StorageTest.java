@@ -2,7 +2,7 @@ package tdd.vendingMachine;
 
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static tdd.vendingMachine.StorageTestConstants.*;
+import static tdd.vendingMachine.TestDataConstants.*;
 import org.junit.Test;
 
 public class StorageTest {
@@ -10,14 +10,7 @@ public class StorageTest {
 
 
 
-    @Test
-    public void testAddingNewShelfToStorage(){
-        Storage storage = new Storage();
 
-        storage.mountNewShelfInStorage();
-
-        assertThat(storage.getNumberOfShelfs()).isEqualTo(1);
-    }
     @Test
     public void testAddingNewShelfToStorageOnPosition(){
         Storage storage = new Storage();
@@ -25,6 +18,7 @@ public class StorageTest {
 
         storage.mountNewShelfInStorage(CHOCOLATE_BAR_SHELF_NUMBER, shelfToMount);
 
+        assertThat(storage.getNumberOfShelfs()).isEqualTo(1);
         assertThat(storage.listAllAvailableShelfs()).contains(shelfToMount);
     }
 

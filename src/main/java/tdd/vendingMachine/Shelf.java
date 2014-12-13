@@ -25,8 +25,16 @@ public class Shelf {
     }
 
     public void addProduct(Product product) {
-        productList.add(product);
+        if(doesProductTypeMatchShelf(product)){
+            productList.add(product);
+        }else{
+            throw new InvalidProductTypeException();
+        }
 
+
+    }
+    private boolean doesProductTypeMatchShelf(Product product){
+        return productType.equals(product.getProductType());
     }
 
 

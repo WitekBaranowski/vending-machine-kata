@@ -10,10 +10,11 @@ import java.util.Map;
 public class Storage {
     private Map<Integer, Shelf> shelfs;
 
-
+    public Storage() {
+        shelfs= new HashMap<>();
+    }
 
     public void mountNewShelfInStorage() {
-        shelfs= new HashMap<>();
         shelfs.put(0, new Shelf("default"));
 
     }

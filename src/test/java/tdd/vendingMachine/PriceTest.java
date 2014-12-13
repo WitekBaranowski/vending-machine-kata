@@ -15,7 +15,7 @@ public class PriceTest {
 
         String priceToDisplay = price.toString();
 
-        assertThat(priceToDisplay).isEqualTo("100");
+        assertThat(priceToDisplay).isEqualTo("1");
 
 
     }
@@ -26,7 +26,6 @@ public class PriceTest {
         String priceToDisplay = price.toString();
 
         assertThat(priceToDisplay).isEqualTo("1,20");
-
 
     }
 

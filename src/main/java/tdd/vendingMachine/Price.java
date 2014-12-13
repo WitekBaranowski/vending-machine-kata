@@ -15,9 +15,11 @@ public class Price {
 
     @Override
     public String toString() {
-        return "Price{" +
-                "value=" + value +
-                '}';
+        if(value%100!=0) {
+            return value / 100 + "," + value % 100;
+        }else {
+            return ""+value / 100;
+        }
     }
 
     @Override

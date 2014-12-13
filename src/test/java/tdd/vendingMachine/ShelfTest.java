@@ -41,7 +41,7 @@ public class ShelfTest {
     public void testAddingItemsToShelf(){
         prepareShelfs(shelfs);
 
-        shelfs.get(CHOCOLATE_BAR_SHELF_NUMBER).addProduct(CHOCOLATE_BAR);
+        shelfs.get(CHOCOLATE_BAR_SHELF_NUMBER).addProduct();
 
         assertThat(shelfs.get(CHOCOLATE_BAR_SHELF_NUMBER).size()).isEqualTo(2);
 

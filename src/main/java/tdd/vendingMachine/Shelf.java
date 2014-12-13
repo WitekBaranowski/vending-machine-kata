@@ -20,7 +20,7 @@ public class Shelf {
         return size;
     }
 
-    public void addProduct(String chocolateBar) {
+    public void addProduct() {
 
     }
 }

@@ -11,14 +11,13 @@ public class VendingMachineTest {
 
     @Test
     public void testProductTypePrice(){
-        long productPrice = 200;
+        Price productPrice = new Price(200);
         ProductType productType = new ProductType(COKE, productPrice);
 
 
-        long price = productType.getProductPrice();
+        Price price = productType.getProductPrice();
 
-        assertThat(price).isEqualTo(200);
-
+        assertThat(price).isEqualTo(productPrice);
 
     }
 

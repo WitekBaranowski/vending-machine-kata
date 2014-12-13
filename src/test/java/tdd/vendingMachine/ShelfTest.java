@@ -21,7 +21,8 @@ public class ShelfTest {
     @Test
     public void testAddingProductToShelf(){
         Shelf shelf = new Shelf();
-        ProductType productType = new ProductType(COKE, 150);
+        Price productPrice = new Price(200);
+        ProductType productType = new ProductType(COKE, productPrice);
         Product product = new Product(productType);
         Product product2 = new Product(productType);
 
@@ -34,8 +35,9 @@ public class ShelfTest {
     @Test
     public void testInvalidProductTypeExceptionIsThrownWhenAddingDifferentProductsToShelf(){
         Shelf shelf = new Shelf();
-        ProductType cokeProductType = new ProductType(COKE, 100);
-        ProductType chocolateBarProductType = new ProductType(CHOCOLATE_BAR, 150);
+        Price productPrice = new Price(200);
+        ProductType cokeProductType = new ProductType(COKE, productPrice);
+        ProductType chocolateBarProductType = new ProductType(CHOCOLATE_BAR, productPrice);
         Product product = new Product(cokeProductType);
         Product product2 = new Product(chocolateBarProductType);
 

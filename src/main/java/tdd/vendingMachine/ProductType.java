@@ -5,15 +5,15 @@ package tdd.vendingMachine;
  */
 public class ProductType {
 
-    private long productPrice;
+    private Price productPrice;
     private String name;
 
-    public ProductType(String name, long productPrice) {
+    public ProductType(String name, Price productPrice) {
         this.productPrice = productPrice;
         this.name = name;
     }
 
-    public long getProductPrice() {
+    public Price getProductPrice() {
         return productPrice;
     }
 

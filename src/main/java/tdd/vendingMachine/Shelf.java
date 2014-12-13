@@ -1,6 +1,7 @@
 package tdd.vendingMachine;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Shelf {
@@ -8,6 +9,7 @@ public class Shelf {
     private List<Product> productList;
 
     public Shelf(String productType) {
+        this.productList = new ArrayList<>();
         this.productType = productType;
     }
 
@@ -23,7 +25,7 @@ public class Shelf {
     }
 
     public void addProduct(Product product) {
-
+        productList.add(product);
 
     }
 

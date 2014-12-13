@@ -1,6 +1,9 @@
 package tdd.vendingMachine;
 
 
+import java.text.NumberFormat;
+import java.util.Locale;
+
 public class Price {
 
     private long value;
@@ -15,11 +18,10 @@ public class Price {
 
     @Override
     public String toString() {
-        if(value%100!=0) {
-            return value / 100 + "," + value % 100;
-        }else {
-            return ""+value / 100;
-        }
+        double valueDecimal = value/100.0;
+        NumberFormat currencyFormat = NumberFormat.getCurrencyInstance(Locale.forLanguageTag("pl-PL"));
+        return currencyFormat.format(valueDecimal);
+
     }
 
     @Override

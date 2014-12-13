@@ -19,7 +19,7 @@ public class StorageTest {
         assertThat(storage.getNumberOfShelfs()).isEqualTo(1);
     }
     @Test
-    public void testAddingNewShelfToStorageOnPoisiton(){
+    public void testAddingNewShelfToStorageOnPosition(){
         Storage storage = new Storage();
         Shelf shelfToMount = new Shelf(CHOCOLATE_BAR);
 

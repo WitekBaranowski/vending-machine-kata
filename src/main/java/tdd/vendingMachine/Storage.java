@@ -3,7 +3,7 @@ package tdd.vendingMachine;
 
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
+
 import java.util.Map;
 
 
@@ -24,7 +24,7 @@ public class Storage {
     }
 
     public void mountNewShelfInStorage(int shelfSlotNumber, Shelf shelfToMount) {
-        shelfs.put(0, new Shelf("default"));
+        shelfs.put(shelfSlotNumber, shelfToMount);
 
     }
 

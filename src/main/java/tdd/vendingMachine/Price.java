@@ -8,17 +8,22 @@ public class Price {
 
     private long value;
 
-    public Price(int pennys) {
+    public Price(long pennys) {
         this.value = pennys;
     }
 
     @Override
     public String toString() {
-        double valueDecimal = value/100.0;
+        return formatPriceToString(this);
+
+    }
+    public static String formatPriceToString(Price price) {
+        double valueDecimal = price.getPriceAsPennys()/100.0;
         NumberFormat currencyFormat = NumberFormat.getCurrencyInstance(Locale.forLanguageTag("pl-PL"));
         return currencyFormat.format(valueDecimal);
 
     }
+
 
     public long getPriceAsPennys() {
         return value;

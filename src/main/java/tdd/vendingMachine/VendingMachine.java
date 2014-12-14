@@ -23,17 +23,13 @@ public class VendingMachine {
 
     public void enterShelfNumber(int shelfNumberEntered) {
         chosenShelfNumber = shelfNumberEntered;
-        loadPriceForShelfOnDisplay();
-        try {
-            priceForSelectedProduct = storage.getPriceObjectForShelfNumber(chosenShelfNumber);
-        }catch (StorageException e){
-            display = e.getMessage();
-        }
+        setupRemainingAmountToPay();
     }
 
-    private void loadPriceForShelfOnDisplay() {
+    private void setupRemainingAmountToPay() throws StorageException {
         try {
-            display = storage.getPriceForShelfNumber(chosenShelfNumber);
+            priceForSelectedProduct = storage.getPriceForShelfNumber(chosenShelfNumber);
+            display = priceForSelectedProduct.toString();
         }catch (StorageException e){
             display = e.getMessage();
         }
@@ -46,9 +42,6 @@ public class VendingMachine {
     public void insertCoin(int amount) {
         amountInserted += amount;
         long remainingCost =  priceForSelectedProduct.getPriceAsPennys() - amountInserted;
-        double valueDecimal = remainingCost/100.0;
-        NumberFormat currencyFormat = NumberFormat.getCurrencyInstance(Locale.forLanguageTag("pl-PL"));
-
-        display = currencyFormat.format(valueDecimal);
+        display = Price.formatPriceToString(new Price(remainingCost));
     }
 }

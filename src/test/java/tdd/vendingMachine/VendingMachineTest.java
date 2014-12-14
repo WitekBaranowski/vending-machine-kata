@@ -116,7 +116,7 @@ public class VendingMachineTest {
 
     }
     @Test
-    public void testChangeReturnFiveZloty(){
+    public void testChangeReturnForFiveZloty(){
         vendingMachine.enterShelfNumber(2);
 
         vendingMachine.insertCoin(Coin.FIVE_ZLOTY);
@@ -125,6 +125,7 @@ public class VendingMachineTest {
         assertThat(change).containsExactly(Coin.TWO_ZLOTY, Coin.ONE_ZLOTY, Coin.FIFTY_PENNYS, Coin.TWENTY_PENNYS, Coin.TEN_PENNYS);
 
     }
+
     @Test
     public void testCancelingTransaction(){
         vendingMachine.enterShelfNumber(2);
@@ -133,11 +134,29 @@ public class VendingMachineTest {
         vendingMachine.insertCoin(Coin.FIFTY_PENNYS);
         vendingMachine.insertCoin(Coin.TEN_PENNYS);
         vendingMachine.cancelTransaction();
-
         List<Coin> change = coinDispenser.returnChange();
+        Product boughtProduct = productDispenser.giveReleasedProduct();
+
+        assertThat(boughtProduct).isNull();
         assertThat(change).containsExactly(Coin.FIFTY_PENNYS, Coin.FIFTY_PENNYS, Coin.TEN_PENNYS);
 
     }
+    @Test
+    public void testReturningCoinsWhenCantReturnChangeAndDisplayMessage(){
+        vendingMachine.enterShelfNumber(2);
+
+        vendingMachine.insertCoin(Coin.FIVE_ZLOTY);
+
+        List<Coin> change = coinDispenser.returnChange();
+        String display = vendingMachine.showDisplay();
+
+        assertThat(display).isEqualTo("No coins for change.");
+        assertThat(change).containsExactly(Coin.FIVE_ZLOTY);
+
+
+    }
+
+
 
 
 

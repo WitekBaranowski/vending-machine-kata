@@ -9,7 +9,6 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import tdd.vendingMachine.exceptions.StorageException;
 
-import java.util.Map;
 
 public class StorageTest {
 
@@ -41,11 +40,7 @@ public class StorageTest {
         storage.mountNewShelfInStorage(CHOCOLATE_BAR_SHELF_NUMBER, cokeShelfToMount);
     }
 
-    private void prepareShelfs(Map<Integer, Shelf> shelfs) {
-        shelfs.put(CHOCOLATE_BAR_SHELF_NUMBER, new Shelf());
-        shelfs.put(COKE_SHELF_NUMBER, new Shelf());
 
-    }
 
     
 }

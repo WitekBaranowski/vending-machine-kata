@@ -37,7 +37,5 @@ public class Storage {
     public String getPriceForShelfNumber(int shelfNumber) {
         Shelf shelf = shelfs.get(shelfNumber);
         return shelf.getShelfProductPrice();
-
-
     }
 }

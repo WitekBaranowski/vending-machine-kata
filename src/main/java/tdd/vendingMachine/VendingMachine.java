@@ -30,4 +30,8 @@ public class VendingMachine {
     public String showDisplay() {
         return display;
     }
+
+    public void insertCoin(int amount) {
+
+    }
 }

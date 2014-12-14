@@ -14,8 +14,6 @@ public class VendingMachineTest {
 
     private VendingMachine vendingMachine;
 
-    private Storage storage;
-
     @Before
     public void setUp() throws Exception {
         int cokePrice = 120;
@@ -25,7 +23,7 @@ public class VendingMachineTest {
 
         shelf.addProduct(product);
 
-        storage = new Storage();
+        Storage storage = new Storage();
         storage.mountNewShelfInStorage(2, shelf);
 
         vendingMachine = new VendingMachine(storage);
@@ -34,9 +32,8 @@ public class VendingMachineTest {
 
     @Test
     public void testDisplayingProductPriceOnVendingMachine(){
-
-
         vendingMachine.enterShelfNumber(2);
+
         String display = vendingMachine.showDisplay();
 
         assertThat(display).isEqualTo("1,2 zł");
@@ -44,14 +41,24 @@ public class VendingMachineTest {
     }
     @Test
     public void testMessageNoProductWhenChosenWrongShelf(){
-
-
         vendingMachine.enterShelfNumber(3);
+
         String display = vendingMachine.showDisplay();
 
         assertThat(display).isEqualTo("There is no shelf under number 3.");
 
     }
+    @Test
+    public void testInsertingCoinsToVendingMachine(){
+        vendingMachine.enterShelfNumber(2);
+
+        vendingMachine.insertCoin(100);
+        String display = vendingMachine.showDisplay();
+
+        assertThat(display).isEqualTo("0,2 zł");
+
+    }
+
 
 
 

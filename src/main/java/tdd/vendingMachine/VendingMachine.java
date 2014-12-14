@@ -16,6 +16,10 @@ public class VendingMachine {
 
     public void enterShelfNumber(int shelfNumberEntered) {
         chosenShelfNumber = shelfNumberEntered;
+        loadPriceForShelfOnDisplay();
+    }
+
+    private void loadPriceForShelfOnDisplay() {
         try {
             display = storage.getPriceForShelfNumber(chosenShelfNumber);
         }catch (StorageException e){

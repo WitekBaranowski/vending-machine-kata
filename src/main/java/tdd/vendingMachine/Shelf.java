@@ -2,6 +2,7 @@ package tdd.vendingMachine;
 
 
 import tdd.vendingMachine.exceptions.InvalidProductTypeException;
+import tdd.vendingMachine.exceptions.StorageException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,13 +42,18 @@ public class Shelf {
     }
 
 
-    public String getShelfProductPrice() {
-        return productType.getProductPrice().toString();
-
-    }
 
     public Price getShelfProductPriceObject() {
         return productType.getProductPrice();
 
+    }
+
+    public Product takeProduct() {
+        if(productList.isEmpty()){
+            throw new StorageException("There are no products on shelf.");
+        }
+        Product product = productList.get(0);
+        productList.remove(0);
+        return product;
     }
 }

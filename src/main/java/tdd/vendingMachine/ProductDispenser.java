@@ -1,11 +1,16 @@
 package tdd.vendingMachine;
 
-/**
- * Created by Witek on 2014-12-14.
- */
-public class ProductDispenser {
-    public Product giveReleasedProduct() {
 
-        return null;
+
+public class ProductDispenser {
+
+    private Product productInDispenser;
+
+    public Product giveReleasedProduct() {
+        return productInDispenser;
+    }
+
+    public void putPurchasedProductInDispenser(Product productFromStorage) {
+        productInDispenser = productFromStorage;
     }
 }

@@ -2,12 +2,12 @@ package tdd.vendingMachine;
 
 import tdd.vendingMachine.exceptions.StorageException;
 
-import java.text.NumberFormat;
-import java.util.Locale;
 
 public class VendingMachine {
 
     private Storage storage;
+
+    private ProductDispenser productDispenser;
 
     private int chosenShelfNumber;
 
@@ -19,6 +19,7 @@ public class VendingMachine {
 
     public VendingMachine(Storage storage, ProductDispenser productDispenser) {
         this.storage = storage;
+        this.productDispenser = productDispenser;
     }
 
     public void enterShelfNumber(int shelfNumberEntered) {
@@ -42,7 +43,14 @@ public class VendingMachine {
 
     public void insertCoin(Coin coin) {
         amountInserted += coin.getValue();
+
         long remainingCost =  priceForSelectedProduct.getPriceAsPennys() - amountInserted;
+
         display = Price.formatPriceToString(new Price(remainingCost));
+
+        if(amountInserted >= priceForSelectedProduct.getPriceAsPennys()){
+            Product productFromStorage = storage.takeProductFromShelf(chosenShelfNumber);
+            productDispenser.putPurchasedProductInDispenser(productFromStorage);
+        }
     }
 }

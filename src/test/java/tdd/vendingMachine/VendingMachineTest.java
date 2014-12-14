@@ -7,6 +7,8 @@ import org.junit.Before;
 
 import org.junit.Test;
 
+import java.util.List;
+
 import static tdd.vendingMachine.TestDataConstants.*;
 
 public class VendingMachineTest {
@@ -14,7 +16,10 @@ public class VendingMachineTest {
 
 
     private VendingMachine vendingMachine;
+
     private ProductDispenser productDispenser;
+
+    private CoinDispenser coinDispenser;
 
     @Before
     public void setUp() throws Exception {
@@ -71,18 +76,35 @@ public class VendingMachineTest {
 
     }
     @Test
-    public void testBuyingWhenInsertingExactlyRequiredAmount(){
+    public void testBuyingWhenPayingExactlyRequiredAmount(){
         vendingMachine.enterShelfNumber(2);
+        Product product = prepareCokeProduct();
 
         vendingMachine.insertCoin(Coin.FIFTY_PENNYS);
         vendingMachine.insertCoin(Coin.FIFTY_PENNYS);
         vendingMachine.insertCoin(Coin.TWENTY_PENNYS);
         Product boughtProduct = productDispenser.giveReleasedProduct();
 
-        Product product = prepareCokeProduct();
         assertThat(boughtProduct).isEqualTo(product);
 
     }
+    @Test
+    public void testChangeReturn(){
+        vendingMachine.enterShelfNumber(2);
+
+        vendingMachine.insertCoin(Coin.FIFTY_PENNYS);
+        vendingMachine.insertCoin(Coin.FIFTY_PENNYS);
+        vendingMachine.insertCoin(Coin.ONE_ZLOTY);
+
+        List<Coin> change = coinDispenser.returnChange();
+
+        assertThat(change).contains(Coin.FIFTY_PENNYS, Coin.TWENTY_PENNYS);
+
+    }
+
+
+
+
 
     private Product prepareCokeProduct() {
         ProductType productType = new ProductType(COKE, new Price(COKE_PRICE));

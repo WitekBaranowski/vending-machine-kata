@@ -20,6 +20,8 @@ public class CoinDispenser {
         return changeToReturn;
     }
 
+
+
     public void calculateChange(long amount) {
 
         while(amount > 0){
@@ -45,6 +47,11 @@ public class CoinDispenser {
 
         }
 
+
+    }
+
+    public void putInsertedCoinsToReturn(List<Coin> insertedCoins) {
+        this.change = insertedCoins;
 
     }
 }

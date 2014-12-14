@@ -2,6 +2,9 @@ package tdd.vendingMachine;
 
 import tdd.vendingMachine.exceptions.StorageException;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class VendingMachine {
 
@@ -18,11 +21,13 @@ public class VendingMachine {
     private Price priceForSelectedProduct;
 
     private long amountInserted;
+    private List<Coin> insertedCoins;
 
     public VendingMachine(Storage storage, ProductDispenser productDispenser, CoinDispenser coinDispenser) {
         this.storage = storage;
         this.productDispenser = productDispenser;
         this.coinDispenser = coinDispenser;
+        insertedCoins = new ArrayList<>();
     }
 
     public void enterShelfNumber(int shelfNumberEntered) {
@@ -45,6 +50,9 @@ public class VendingMachine {
     }
 
     public void insertCoin(Coin coin) {
+
+        insertedCoins.add(coin);
+
         updateAmountInserted(coin);
 
         setDisplayMessage(Price.formatPriceToString(new Price(getRemainingCost())));
@@ -78,7 +86,7 @@ public class VendingMachine {
     }
 
     public void cancelTransaction() {
-
+        coinDispenser.putInsertedCoinsToReturn(insertedCoins);
 
     }
 }

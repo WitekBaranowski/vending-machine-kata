@@ -1,5 +1,6 @@
 package tdd.vendingMachine;
 
+import tdd.vendingMachine.exceptions.NotEnoughCointToReturnChange;
 import tdd.vendingMachine.exceptions.StorageException;
 
 import java.util.ArrayList;
@@ -58,9 +59,15 @@ public class VendingMachine {
         setDisplayMessage(Price.formatPriceToString(new Price(getRemainingCost())));
 
         if(isEnoughCoinsValueInserted()){
-            Product productFromStorage = storage.takeProductFromShelf(chosenShelfNumber);
-            productDispenser.putPurchasedProductInDispenser(productFromStorage);
-            coinDispenser.calculateChange(changeInPennys());
+            try {
+                coinDispenser.calculateChange(changeInPennys());
+
+                Product productFromStorage = storage.takeProductFromShelf(chosenShelfNumber);
+                productDispenser.putPurchasedProductInDispenser(productFromStorage);
+            }catch (NotEnoughCointToReturnChange ex){
+                cancelTransaction();
+                setDisplayMessage("No coins for change.");
+            }
 
         }
     }

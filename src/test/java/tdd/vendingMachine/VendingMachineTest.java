@@ -144,8 +144,17 @@ public class VendingMachineTest {
     @Test
     public void testReturningCoinsWhenCantReturnChangeAndDisplayMessage(){
         vendingMachine.enterShelfNumber(2);
+        coinDispenser.setCoinAmountInDispenser(Coin.FIVE_ZLOTY, 1);
+        coinDispenser.setCoinAmountInDispenser(Coin.TWO_ZLOTY, 0);
+        coinDispenser.setCoinAmountInDispenser(Coin.ONE_ZLOTY, 1);
+        coinDispenser.setCoinAmountInDispenser(Coin.FIFTY_PENNYS, 1);
+        coinDispenser.setCoinAmountInDispenser(Coin.TWENTY_PENNYS, 0);
+        coinDispenser.setCoinAmountInDispenser(Coin.TEN_PENNYS, 0);
+
 
         vendingMachine.insertCoin(Coin.FIVE_ZLOTY);
+
+
 
         List<Coin> change = coinDispenser.returnChange();
         String display = vendingMachine.showDisplay();

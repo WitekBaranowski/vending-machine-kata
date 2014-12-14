@@ -23,10 +23,11 @@ public class VendingMachine {
 
     public void enterShelfNumber(int shelfNumberEntered) {
         chosenShelfNumber = shelfNumberEntered;
-        setupRemainingAmountToPay();
+        setupTradeTransaction();
+
     }
 
-    private void setupRemainingAmountToPay() throws StorageException {
+    private void setupTradeTransaction() throws StorageException {
         try {
             priceForSelectedProduct = storage.getPriceForShelfNumber(chosenShelfNumber);
             display = priceForSelectedProduct.toString();
@@ -39,8 +40,8 @@ public class VendingMachine {
         return display;
     }
 
-    public void insertCoin(int amount) {
-        amountInserted += amount;
+    public void insertCoin(Coin coin) {
+        amountInserted += coin.getValue();
         long remainingCost =  priceForSelectedProduct.getPriceAsPennys() - amountInserted;
         display = Price.formatPriceToString(new Price(remainingCost));
     }

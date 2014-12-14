@@ -34,9 +34,9 @@ public class VendingMachine {
     private void setupTradeTransaction() throws StorageException {
         try {
             priceForSelectedProduct = storage.getPriceForShelfNumber(chosenShelfNumber);
-            display = priceForSelectedProduct.toString();
+            setDisplayMessage(priceForSelectedProduct.toString());
         }catch (StorageException e){
-            display = e.getMessage();
+            setDisplayMessage(e.getMessage());
         }
     }
 
@@ -45,17 +45,35 @@ public class VendingMachine {
     }
 
     public void insertCoin(Coin coin) {
-        amountInserted += coin.getValue();
+        updateAmountInserted(coin);
 
-        long remainingCost =  priceForSelectedProduct.getPriceAsPennys() - amountInserted;
+        setDisplayMessage(Price.formatPriceToString(new Price(getRemainingCost())));
 
-        display = Price.formatPriceToString(new Price(remainingCost));
-
-        if(amountInserted >= priceForSelectedProduct.getPriceAsPennys()){
+        if(isEnoughCoinsValueInserted()){
             Product productFromStorage = storage.takeProductFromShelf(chosenShelfNumber);
             productDispenser.putPurchasedProductInDispenser(productFromStorage);
-            coinDispenser.calculateChange(amountInserted - priceForSelectedProduct.getPriceAsPennys());
+            coinDispenser.calculateChange(changeInPennys());
 
         }
+    }
+
+    private long getRemainingCost() {
+        return priceForSelectedProduct.getPriceAsPennys() - amountInserted;
+    }
+
+    private void updateAmountInserted(Coin coin) {
+        amountInserted += coin.getValue();
+    }
+
+    private void setDisplayMessage(String message) {
+        display = message;
+    }
+
+    private boolean isEnoughCoinsValueInserted() {
+        return amountInserted >= priceForSelectedProduct.getPriceAsPennys();
+    }
+
+    private long changeInPennys() {
+        return amountInserted - priceForSelectedProduct.getPriceAsPennys();
     }
 }

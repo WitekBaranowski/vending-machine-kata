@@ -32,6 +32,6 @@ public class VendingMachine {
     }
 
     public void insertCoin(int amount) {
-
+        display = "0,2 zł";
     }
 }

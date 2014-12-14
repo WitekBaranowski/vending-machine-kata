@@ -32,7 +32,8 @@ public class VendingMachineTest {
         Storage storage = new Storage();
         storage.mountNewShelfInStorage(2, shelf);
         productDispenser = new ProductDispenser();
-        vendingMachine = new VendingMachine(storage, productDispenser);
+        coinDispenser = new CoinDispenser();
+        vendingMachine = new VendingMachine(storage, productDispenser, coinDispenser);
 
     }
 

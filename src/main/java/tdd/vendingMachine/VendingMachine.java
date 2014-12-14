@@ -9,6 +9,8 @@ public class VendingMachine {
 
     private ProductDispenser productDispenser;
 
+    private CoinDispenser coinDispenser;
+
     private int chosenShelfNumber;
 
     private String display;
@@ -17,9 +19,10 @@ public class VendingMachine {
 
     private long amountInserted;
 
-    public VendingMachine(Storage storage, ProductDispenser productDispenser) {
+    public VendingMachine(Storage storage, ProductDispenser productDispenser, CoinDispenser coinDispenser) {
         this.storage = storage;
         this.productDispenser = productDispenser;
+        this.coinDispenser = coinDispenser;
     }
 
     public void enterShelfNumber(int shelfNumberEntered) {

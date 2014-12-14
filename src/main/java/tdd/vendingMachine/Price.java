@@ -12,16 +12,16 @@ public class Price {
         this.value = pennys;
     }
 
-
-
-
-
     @Override
     public String toString() {
         double valueDecimal = value/100.0;
         NumberFormat currencyFormat = NumberFormat.getCurrencyInstance(Locale.forLanguageTag("pl-PL"));
         return currencyFormat.format(valueDecimal);
 
+    }
+
+    public long getPriceAsPennys() {
+        return value;
     }
 
     @Override

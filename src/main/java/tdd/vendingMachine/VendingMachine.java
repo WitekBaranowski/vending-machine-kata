@@ -2,6 +2,9 @@ package tdd.vendingMachine;
 
 import tdd.vendingMachine.exceptions.StorageException;
 
+import java.text.NumberFormat;
+import java.util.Locale;
+
 public class VendingMachine {
 
     private Storage storage;
@@ -10,6 +13,10 @@ public class VendingMachine {
 
     private String display;
 
+    private Price priceForSelectedProduct;
+
+    private long amountInserted;
+
     public VendingMachine(Storage storage) {
         this.storage = storage;
     }
@@ -17,6 +24,11 @@ public class VendingMachine {
     public void enterShelfNumber(int shelfNumberEntered) {
         chosenShelfNumber = shelfNumberEntered;
         loadPriceForShelfOnDisplay();
+        try {
+            priceForSelectedProduct = storage.getPriceObjectForShelfNumber(chosenShelfNumber);
+        }catch (StorageException e){
+            display = e.getMessage();
+        }
     }
 
     private void loadPriceForShelfOnDisplay() {
@@ -32,6 +44,11 @@ public class VendingMachine {
     }
 
     public void insertCoin(int amount) {
-        display = "0,2 zł";
+        amountInserted += amount;
+        long remainingCost =  priceForSelectedProduct.getPriceAsPennys() - amountInserted;
+        double valueDecimal = remainingCost/100.0;
+        NumberFormat currencyFormat = NumberFormat.getCurrencyInstance(Locale.forLanguageTag("pl-PL"));
+
+        display = currencyFormat.format(valueDecimal);
     }
 }

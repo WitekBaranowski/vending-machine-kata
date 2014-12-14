@@ -45,4 +45,9 @@ public class Shelf {
         return productType.getProductPrice().toString();
 
     }
+
+    public Price getShelfProductPriceObject() {
+        return productType.getProductPrice();
+
+    }
 }

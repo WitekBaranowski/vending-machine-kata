@@ -63,7 +63,7 @@ public class VendingMachineTest {
     public void testInserting50PennysVendingMachine(){
         vendingMachine.enterShelfNumber(2);
 
-        vendingMachine.insertCoin(20);
+        vendingMachine.insertCoin(50);
         String display = vendingMachine.showDisplay();
 
         assertThat(display).isEqualTo("0,7 zł");

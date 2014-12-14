@@ -98,7 +98,6 @@ public class VendingMachineTest {
         vendingMachine.insertCoin(Coin.ONE_ZLOTY);
 
         List<Coin> change = coinDispenser.returnChange();
-
         assertThat(change).contains(Coin.FIFTY_PENNYS, Coin.TWENTY_PENNYS);
 
     }

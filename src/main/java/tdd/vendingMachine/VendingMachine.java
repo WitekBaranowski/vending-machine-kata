@@ -54,6 +54,8 @@ public class VendingMachine {
         if(amountInserted >= priceForSelectedProduct.getPriceAsPennys()){
             Product productFromStorage = storage.takeProductFromShelf(chosenShelfNumber);
             productDispenser.putPurchasedProductInDispenser(productFromStorage);
+            coinDispenser.calculateChange();
+
         }
     }
 }

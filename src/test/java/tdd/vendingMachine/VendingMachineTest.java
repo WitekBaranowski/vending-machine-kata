@@ -77,6 +77,20 @@ public class VendingMachineTest {
 
     }
     @Test
+    public void testNoProductIsReturnedWhenNotEnoughMoney(){
+        vendingMachine.enterShelfNumber(2);
+
+        vendingMachine.insertCoin(Coin.FIFTY_PENNYS);
+        vendingMachine.insertCoin(Coin.FIFTY_PENNYS);
+
+        Product boughtProduct = productDispenser.giveReleasedProduct();
+
+        assertThat(boughtProduct).isNull();
+
+    }
+
+
+    @Test
     public void testBuyingWhenPayingExactlyRequiredAmount(){
         vendingMachine.enterShelfNumber(2);
         Product product = prepareCokeProduct();
@@ -111,6 +125,21 @@ public class VendingMachineTest {
         assertThat(change).containsExactly(Coin.TWO_ZLOTY, Coin.ONE_ZLOTY, Coin.FIFTY_PENNYS, Coin.TWENTY_PENNYS, Coin.TEN_PENNYS);
 
     }
+    @Test
+    public void testCancelingTransaction(){
+        vendingMachine.enterShelfNumber(2);
+
+        vendingMachine.insertCoin(Coin.FIFTY_PENNYS);
+        vendingMachine.insertCoin(Coin.FIFTY_PENNYS);
+        vendingMachine.insertCoin(Coin.TEN_PENNYS);
+        vendingMachine.cancelTransaction();
+
+        List<Coin> change = coinDispenser.returnChange();
+        assertThat(change).containsExactly(Coin.FIFTY_PENNYS, Coin.FIFTY_PENNYS, Coin.TEN_PENNYS);
+
+    }
+
+
 
 
 

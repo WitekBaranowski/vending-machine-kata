@@ -76,4 +76,9 @@ public class VendingMachine {
     private long changeInPennys() {
         return amountInserted - priceForSelectedProduct.getPriceAsPennys();
     }
+
+    public void cancelTransaction() {
+
+
+    }
 }

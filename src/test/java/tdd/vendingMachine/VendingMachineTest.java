@@ -98,7 +98,7 @@ public class VendingMachineTest {
         vendingMachine.insertCoin(Coin.ONE_ZLOTY);
 
         List<Coin> change = coinDispenser.returnChange();
-        assertThat(change).containsExactly(Coin.FIFTY_PENNYS, Coin.TWENTY_PENNYS);
+        assertThat(change).containsExactly(Coin.FIFTY_PENNYS, Coin.TWENTY_PENNYS, Coin.TEN_PENNYS);
 
     }
     @Test
@@ -108,7 +108,7 @@ public class VendingMachineTest {
         vendingMachine.insertCoin(Coin.FIVE_ZLOTY);
 
         List<Coin> change = coinDispenser.returnChange();
-        assertThat(change).containsExactly(Coin.TWO_ZLOTY, Coin.TWO_ZLOTY, Coin.FIFTY_PENNYS, Coin.TWENTY_PENNYS);
+        assertThat(change).containsExactly(Coin.TWO_ZLOTY, Coin.ONE_ZLOTY, Coin.FIFTY_PENNYS, Coin.TWENTY_PENNYS, Coin.TEN_PENNYS);
 
     }
 

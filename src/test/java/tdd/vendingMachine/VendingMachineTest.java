@@ -90,7 +90,7 @@ public class VendingMachineTest {
 
     }
     @Test
-    public void testChangeReturn(){
+    public void testChangeReturnForTwoZloty(){
         vendingMachine.enterShelfNumber(2);
 
         vendingMachine.insertCoin(Coin.FIFTY_PENNYS);
@@ -101,6 +101,17 @@ public class VendingMachineTest {
         assertThat(change).contains(Coin.FIFTY_PENNYS, Coin.TWENTY_PENNYS);
 
     }
+    @Test
+    public void testChangeReturnFiveZloty(){
+        vendingMachine.enterShelfNumber(2);
+
+        vendingMachine.insertCoin(Coin.FIVE_ZLOTY);
+
+        List<Coin> change = coinDispenser.returnChange();
+        assertThat(change).contains(Coin.TWO_ZLOTY, Coin.TWO_ZLOTY, Coin.FIFTY_PENNYS, Coin.TWENTY_PENNYS);
+
+    }
+
 
 
 

@@ -34,7 +34,10 @@ public class Storage {
     }
 
 
-    public String getPriceForShelfNumber(int shelfNumber) {
+    public String getPriceForShelfNumber(int shelfNumber) throws StorageException{
+        if (!shelfs.containsKey(shelfNumber)) {
+            throw new StorageException(String.format("There is no shelf under number %d.",shelfNumber));
+        }
         Shelf shelf = shelfs.get(shelfNumber);
         return shelf.getShelfProductPrice();
     }

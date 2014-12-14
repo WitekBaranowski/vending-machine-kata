@@ -1,5 +1,7 @@
 package tdd.vendingMachine;
 
+import tdd.vendingMachine.exceptions.StorageException;
+
 public class VendingMachine {
 
     private Storage storage;
@@ -14,7 +16,11 @@ public class VendingMachine {
 
     public void enterShelfNumber(int shelfNumberEntered) {
         chosenShelfNumber = shelfNumberEntered;
-        display = storage.getPriceForShelfNumber(chosenShelfNumber);
+        try {
+            display = storage.getPriceForShelfNumber(chosenShelfNumber);
+        }catch (StorageException e){
+            display = e.getMessage();
+        }
     }
 
     public String showDisplay() {

@@ -49,13 +49,24 @@ public class VendingMachineTest {
 
     }
     @Test
-    public void testInsertingCoinsToVendingMachine(){
+    public void testInserting100PennysToVendingMachine(){
         vendingMachine.enterShelfNumber(2);
 
         vendingMachine.insertCoin(100);
         String display = vendingMachine.showDisplay();
 
         assertThat(display).isEqualTo("0,2 zł");
+
+    }
+
+    @Test
+    public void testInserting50PennysVendingMachine(){
+        vendingMachine.enterShelfNumber(2);
+
+        vendingMachine.insertCoin(20);
+        String display = vendingMachine.showDisplay();
+
+        assertThat(display).isEqualTo("0,7 zł");
 
     }
 

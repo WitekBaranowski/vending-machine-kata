@@ -5,6 +5,8 @@ public final class TestDataConstants {
     static String COKE = "coke";
     static String CHOCOLATE_BAR = "chocolate bar";
 
+    static long COKE_PRICE = 120;
+
 
     static int COKE_SHELF_NUMBER = 1;
     static int CHOCOLATE_BAR_SHELF_NUMBER = 2;

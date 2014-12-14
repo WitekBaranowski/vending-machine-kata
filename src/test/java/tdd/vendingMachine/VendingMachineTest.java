@@ -12,21 +12,22 @@ import static tdd.vendingMachine.TestDataConstants.*;
 public class VendingMachineTest {
 
 
+
     private VendingMachine vendingMachine;
+    private ProductDispenser productDispenser;
 
     @Before
     public void setUp() throws Exception {
-        int cokePrice = 120;
+
         Shelf shelf = new Shelf();
-        ProductType productType = new ProductType(COKE, new Price(cokePrice));
-        Product product = new Product(productType);
+        Product product = prepareCokeProduct();
 
         shelf.addProduct(product);
 
         Storage storage = new Storage();
         storage.mountNewShelfInStorage(2, shelf);
-
-        vendingMachine = new VendingMachine(storage);
+        productDispenser = new ProductDispenser();
+        vendingMachine = new VendingMachine(storage, productDispenser);
 
     }
 
@@ -49,7 +50,7 @@ public class VendingMachineTest {
 
     }
     @Test
-    public void testInsertingOneZlotyToVendingMachine(){
+    public void testInsertingOneZlotyCoinToVendingMachine(){
         vendingMachine.enterShelfNumber(2);
 
         vendingMachine.insertCoin(Coin.ONE_ZLOTY);
@@ -60,7 +61,7 @@ public class VendingMachineTest {
     }
 
     @Test
-    public void testInserting50PennysVendingMachine(){
+    public void testInserting50PennysCoinVendingMachine(){
         vendingMachine.enterShelfNumber(2);
 
         vendingMachine.insertCoin(Coin.FIFTY_PENNYS);
@@ -69,9 +70,24 @@ public class VendingMachineTest {
         assertThat(display).isEqualTo("0,7 zł");
 
     }
+    @Test
+    public void testBuyingWhenInsertingExactlyRequiredAmount(){
+        vendingMachine.enterShelfNumber(2);
 
+        vendingMachine.insertCoin(Coin.FIFTY_PENNYS);
+        vendingMachine.insertCoin(Coin.FIFTY_PENNYS);
+        vendingMachine.insertCoin(Coin.TWENTY_PENNYS);
+        Product boughtProduct = productDispenser.giveReleasedProduct();
 
+        Product product = prepareCokeProduct();
+        assertThat(boughtProduct).isEqualTo(product);
 
+    }
+
+    private Product prepareCokeProduct() {
+        ProductType productType = new ProductType(COKE, new Price(COKE_PRICE));
+        return new Product(productType);
+    }
 
 
 }

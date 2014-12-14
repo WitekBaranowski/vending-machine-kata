@@ -17,7 +17,7 @@ public class VendingMachine {
 
     private long amountInserted;
 
-    public VendingMachine(Storage storage) {
+    public VendingMachine(Storage storage, ProductDispenser productDispenser) {
         this.storage = storage;
     }
 

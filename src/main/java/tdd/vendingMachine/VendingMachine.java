@@ -61,7 +61,7 @@ public class VendingMachine {
         if(isEnoughCoinsValueInserted()){
             try {
                 coinDispenser.calculateChange(changeInPennys());
-
+                coinDispenser.addNewCoins(insertedCoins);
                 Product productFromStorage = storage.takeProductFromShelf(chosenShelfNumber);
                 productDispenser.putPurchasedProductInDispenser(productFromStorage);
             }catch (NotEnoughCointToReturnChange ex){

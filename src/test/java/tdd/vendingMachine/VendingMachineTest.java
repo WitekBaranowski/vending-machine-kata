@@ -107,6 +107,11 @@ public class VendingMachineTest {
     public void testChangeReturnForTwoZloty(){
         vendingMachine.enterShelfNumber(2);
 
+        coinDispenser.setCoinAmountInDispenser(Coin.FIFTY_PENNYS, 1);
+        coinDispenser.setCoinAmountInDispenser(Coin.TWENTY_PENNYS, 1);
+        coinDispenser.setCoinAmountInDispenser(Coin.TEN_PENNYS, 1);
+
+
         vendingMachine.insertCoin(Coin.FIFTY_PENNYS);
         vendingMachine.insertCoin(Coin.FIFTY_PENNYS);
         vendingMachine.insertCoin(Coin.ONE_ZLOTY);
@@ -118,6 +123,11 @@ public class VendingMachineTest {
     @Test
     public void testChangeReturnForFiveZloty(){
         vendingMachine.enterShelfNumber(2);
+        coinDispenser.setCoinAmountInDispenser(Coin.TWO_ZLOTY, 1);
+        coinDispenser.setCoinAmountInDispenser(Coin.ONE_ZLOTY, 1);
+        coinDispenser.setCoinAmountInDispenser(Coin.FIFTY_PENNYS, 1);
+        coinDispenser.setCoinAmountInDispenser(Coin.TWENTY_PENNYS, 1);
+        coinDispenser.setCoinAmountInDispenser(Coin.TEN_PENNYS, 1);
 
         vendingMachine.insertCoin(Coin.FIVE_ZLOTY);
 

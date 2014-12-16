@@ -34,13 +34,6 @@ public class Storage {
     }
 
 
-    public Price getPriceForShelfNumber(int shelfNumber) throws StorageException {
-        if (!shelfs.containsKey(shelfNumber)) {
-            throw new StorageException(String.format("There is no shelf under number %d.",shelfNumber));
-        }
-        Shelf shelf = shelfs.get(shelfNumber);
-        return shelf.getShelfProductPriceObject();
-    }
 
     public Product takeProductFromShelf(int shelfNumber) {
         if (!shelfs.containsKey(shelfNumber)) {
@@ -48,5 +41,13 @@ public class Storage {
         }
         Shelf shelf = shelfs.get(shelfNumber);
         return  shelf.takeProduct();
+    }
+
+    public ProductType getSelectedProductType(int shelfNumber) {
+        if (!shelfs.containsKey(shelfNumber)) {
+            throw new StorageException(String.format("There is no shelf under number %d.",shelfNumber));
+        }
+        Shelf shelf = shelfs.get(shelfNumber);
+        return  shelf.getProductType();
     }
 }

@@ -4,18 +4,12 @@ package tdd.vendingMachine;
  * Created by Witek on 2014-12-13.
  */
 public class ProductType {
-
-    private Price productPrice;
     private String name;
 
-    public ProductType(String name, Price productPrice) {
-        this.productPrice = productPrice;
+    public ProductType(String name) {
         this.name = name;
     }
 
-    public Price getProductPrice() {
-        return productPrice;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -34,7 +28,5 @@ public class ProductType {
         return name.hashCode();
     }
 
-    public void changeProductTypePrice(Price price) {
-        productPrice = price;
-    }
+
 }

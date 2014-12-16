@@ -12,16 +12,7 @@ import java.util.Map;
  */
 public class PriceChangeTest {
 
-    @Test
-    public void testChangeProductPrice(){
-        Product product = new Product(new ProductType("Test", new Price(100)));
 
-        ProductType type = product.getProductType();
-        type.changeProductTypePrice(new Price(120));
-
-
-        assertThat(type.getProductPrice()).isEqualTo(new Price(120));
-    }
     @Test
     public void testFindingProductPriceFromList(){
         Map<ProductType, Price> priceList = new HashMap<>();

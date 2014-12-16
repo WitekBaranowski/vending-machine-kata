@@ -43,10 +43,6 @@ public class Shelf {
 
 
 
-    public Price getShelfProductPriceObject() {
-        return productType.getProductPrice();
-
-    }
 
     public Product takeProduct() {
         if(productList.isEmpty()){
@@ -55,5 +51,9 @@ public class Shelf {
         Product product = productList.get(0);
         productList.remove(0);
         return product;
+    }
+
+    public ProductType getProductType() {
+        return productType;
     }
 }

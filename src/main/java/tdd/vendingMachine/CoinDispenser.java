@@ -82,16 +82,18 @@ public class CoinDispenser {
     }
 
     public void putInsertedCoinsToReturn(List<Coin> insertedCoins) {
-        for (Coin insertedCoin : insertedCoins) {
-            availableCoins.put(insertedCoin, availableCoins.get(insertedCoin)-1);
-        }
-        this.change = insertedCoins;
+        removeInsertedCoinsFromAvailable(insertedCoins);
+        returnInsertedCoins(insertedCoins);
 
     }
 
-    public void addNewCoins(List<Coin> insertedCoins) {
+    private void returnInsertedCoins(List<Coin> insertedCoins) {
+        this.change = insertedCoins;
+    }
+
+    private void removeInsertedCoinsFromAvailable(List<Coin> insertedCoins) {
         for (Coin insertedCoin : insertedCoins) {
-            availableCoins.put(insertedCoin, availableCoins.get(insertedCoin)+1);
+            availableCoins.put(insertedCoin, availableCoins.get(insertedCoin)-1);
         }
     }
 

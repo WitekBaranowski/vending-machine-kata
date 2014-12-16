@@ -67,7 +67,7 @@ public class VendingMachine {
 
         insertedCoins.add(coin);
 
-        coinDispenser.addNewCoin(coin);
+        coinDispenser.addNewCoinToAvailable(coin);
 
         updateAmountInserted(coin);
 

@@ -72,9 +72,13 @@ public class CoinDispenser {
 
     private long processCoinToChange(long amount, Coin coin) {
         amount -= coin.getValue();
-        availableCoins.put(coin, availableCoins.get(coin)-1);
+        removeCoinFromAvailable(coin);
         change.add(coin);
         return amount;
+    }
+
+    private void removeCoinFromAvailable(Coin coin) {
+        availableCoins.put(coin, availableCoins.get(coin)-1);
     }
 
     private boolean canReturnCoinInChange(long amount, Coin coin) {
@@ -93,12 +97,12 @@ public class CoinDispenser {
 
     private void removeInsertedCoinsFromAvailable(List<Coin> insertedCoins) {
         for (Coin insertedCoin : insertedCoins) {
-            availableCoins.put(insertedCoin, availableCoins.get(insertedCoin)-1);
+            removeCoinFromAvailable(insertedCoin);
         }
     }
 
 
-    public void addNewCoin(Coin coin) {
+    public void addNewCoinToAvailable(Coin coin) {
         availableCoins.put(coin, availableCoins.get(coin)+1);
     }
 }

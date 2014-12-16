@@ -6,11 +6,17 @@ import static org.assertj.core.api.Assertions.*;
 import org.junit.Before;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.runners.MockitoJUnitRunner;
+
+import static org.mockito.Mockito.*;
 
 import java.util.List;
 
 import static tdd.vendingMachine.TestDataConstants.*;
 
+@RunWith(MockitoJUnitRunner.class)
 public class VendingMachineTest {
 
 
@@ -21,6 +27,7 @@ public class VendingMachineTest {
 
     private CoinDispenser coinDispenser;
 
+    @Mock
     private PriceList priceList;
 
     @Before
@@ -28,15 +35,16 @@ public class VendingMachineTest {
 
         Shelf shelf = new Shelf();
         Product product = prepareCokeProduct();
-
         shelf.addProduct(product);
 
         Storage storage = new Storage();
         storage.mountNewShelfInStorage(2, shelf);
+
         productDispenser = new ProductDispenser();
         coinDispenser = new CoinDispenser();
-        priceList = new PriceList();
-        priceList.initDefaultPrices();
+
+        when(priceList.getPriceForProductType(cokeProductType())).thenReturn(cokePrice());
+
         vendingMachine = new VendingMachine(storage, productDispenser, coinDispenser, priceList);
 
     }
@@ -231,6 +239,12 @@ public class VendingMachineTest {
     private Product prepareCokeProduct() {
         ProductType productType = new ProductType(COKE);
         return new Product(productType);
+    }
+    private static ProductType cokeProductType(){
+        return new ProductType(COKE);
+    }
+    private static Price cokePrice(){
+        return new Price(COKE_PRICE);
     }
 
 

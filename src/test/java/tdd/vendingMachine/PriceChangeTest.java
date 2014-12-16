@@ -40,7 +40,7 @@ public class PriceChangeTest {
     }
     @Test
     public void testFindingProductPriceFromPriceListThrow_NoPriceForGivenProductExceptionWhenNoPriceSetForProduct(){
-        PriceList priceList = new PriceList();
+        PriceList priceList = new PriceList(false);
 
         exception.expect(NoPriceForGivenProductException.class);
 

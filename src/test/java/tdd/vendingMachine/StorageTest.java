@@ -39,8 +39,28 @@ public class StorageTest {
         storage.mountNewShelfInStorage(CHOCOLATE_BAR_SHELF_NUMBER, chocoShelfToMount);
         storage.mountNewShelfInStorage(CHOCOLATE_BAR_SHELF_NUMBER, cokeShelfToMount);
     }
+    @Test
+    public void testStorageChangeAfterTakingProduct(){
+        Storage storage = new Storage();
+        Shelf chocoShelfToMount = new Shelf();
+        ProductType chocoProductType = new ProductType(CHOCOLATE_BAR);
+        chocoShelfToMount.addProduct(new Product(chocoProductType));
+        chocoShelfToMount.addProduct(new Product(chocoProductType));
+        chocoShelfToMount.addProduct(new Product(chocoProductType));
+        storage.mountNewShelfInStorage(CHOCOLATE_BAR_SHELF_NUMBER, chocoShelfToMount);
+
+
+        storage.takeProductFromShelf(CHOCOLATE_BAR_SHELF_NUMBER);
+
+        assertThat(chocoShelfToMount.size()).isEqualTo(2);
 
 
 
-    
+
+    }
+
+
+
+
+
 }

@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-import static tdd.vendingMachine.TestDataConstants.*;
 
 
 public class VendingMachine {

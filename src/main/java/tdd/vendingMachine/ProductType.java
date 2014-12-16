@@ -33,4 +33,8 @@ public class ProductType {
     public int hashCode() {
         return name.hashCode();
     }
+
+    public void changeProductTypePrice(Price price) {
+        productPrice = price;
+    }
 }

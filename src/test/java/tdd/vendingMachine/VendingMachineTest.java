@@ -184,6 +184,38 @@ public class VendingMachineTest {
 
 
     }
+    @Test
+    public void testReturningCoinsWhenCanReturnChangeWithUsageEnteredCoins(){
+        vendingMachine.enterShelfNumber(2);
+        coinDispenser.setCoinAmountInDispenser(Coin.FIVE_ZLOTY, 0);
+        coinDispenser.setCoinAmountInDispenser(Coin.TWO_ZLOTY, 0);
+        coinDispenser.setCoinAmountInDispenser(Coin.ONE_ZLOTY, 1);
+        coinDispenser.setCoinAmountInDispenser(Coin.FIFTY_PENNYS, 0);
+        coinDispenser.setCoinAmountInDispenser(Coin.TWENTY_PENNYS, 0);
+        coinDispenser.setCoinAmountInDispenser(Coin.TEN_PENNYS, 0);
+        Product product = prepareCokeProduct();
+
+
+        vendingMachine.insertCoin(Coin.FIFTY_PENNYS);
+        vendingMachine.insertCoin(Coin.TWENTY_PENNYS);
+        vendingMachine.insertCoin(Coin.TWENTY_PENNYS);
+        vendingMachine.insertCoin(Coin.TEN_PENNYS);
+        vendingMachine.insertCoin(Coin.TEN_PENNYS);
+        vendingMachine.insertCoin(Coin.ONE_ZLOTY);
+        Product boughtProduct = productDispenser.giveReleasedProduct();
+        List<Coin> change = coinDispenser.returnChange();
+        String display = vendingMachine.showDisplay();
+
+
+        assertThat(boughtProduct).isEqualTo(product);
+        assertThat(display).isEqualTo("Thanks for buying our product.");
+        assertThat(change).containsExactly(Coin.ONE_ZLOTY, Coin.TWENTY_PENNYS, Coin.TWENTY_PENNYS);
+
+
+    }
+
+
+
 
     private void prepareSucesfullTransactionWithChange() {
         vendingMachine.enterShelfNumber(2);

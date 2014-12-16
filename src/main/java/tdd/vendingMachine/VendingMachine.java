@@ -73,16 +73,20 @@ public class VendingMachine {
         setDisplayMessage(Price.formatPriceToString(new Price(getRemainingCost())));
 
         if(isEnoughCoinsValueInserted()){
-            try {
-                coinDispenser.calculateChange(changeInPennys());
-                coinDispenser.addNewCoins(insertedCoins);
-                Product productFromStorage = storage.takeProductFromShelf(chosenShelfNumber);
-                productDispenser.putPurchasedProductInDispenser(productFromStorage);
-            }catch (NotEnoughCointToReturnChange ex){
-                cancelTransaction();
-                setDisplayMessage("No coins for change.");
-            }
+            processTransaction();
 
+        }
+    }
+
+    private void processTransaction() {
+        try {
+            coinDispenser.calculateChange(changeInPennys());
+            coinDispenser.addNewCoins(insertedCoins);
+            Product productFromStorage = storage.takeProductFromShelf(chosenShelfNumber);
+            productDispenser.putPurchasedProductInDispenser(productFromStorage);
+        }catch (NotEnoughCointToReturnChange ex){
+            cancelTransaction();
+            setDisplayMessage("No coins for change.");
         }
     }
 

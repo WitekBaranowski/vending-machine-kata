@@ -218,7 +218,7 @@ public class VendingMachineTest {
         assertThat(boughtProduct).isEqualTo(product);
         assertThat(display).isEqualTo("Thanks for buying our product.");
         assertThat(change).containsExactly(Coin.FIFTY_PENNYS, Coin.TWENTY_PENNYS, Coin.TWENTY_PENNYS);
-
+        assertThat(coinDispenser.listAllCoins()).containsExactly(Coin.ONE_ZLOTY, Coin.ONE_ZLOTY, Coin.TEN_PENNYS, Coin.TEN_PENNYS);
 
     }
 

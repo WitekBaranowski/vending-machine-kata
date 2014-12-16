@@ -82,6 +82,9 @@ public class CoinDispenser {
     }
 
     public void putInsertedCoinsToReturn(List<Coin> insertedCoins) {
+        for (Coin insertedCoin : insertedCoins) {
+            availableCoins.put(insertedCoin, availableCoins.get(insertedCoin)-1);
+        }
         this.change = insertedCoins;
 
     }
@@ -90,5 +93,10 @@ public class CoinDispenser {
         for (Coin insertedCoin : insertedCoins) {
             availableCoins.put(insertedCoin, availableCoins.get(insertedCoin)+1);
         }
+    }
+
+
+    public void addNewCoin(Coin coin) {
+        availableCoins.put(coin, availableCoins.get(coin)+1);
     }
 }

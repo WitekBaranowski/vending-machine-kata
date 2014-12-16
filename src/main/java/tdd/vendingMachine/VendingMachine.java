@@ -67,6 +67,8 @@ public class VendingMachine {
 
         insertedCoins.add(coin);
 
+        coinDispenser.addNewCoin(coin);
+
         updateAmountInserted(coin);
 
         setDisplayMessage(Price.formatPriceToString(new Price(getRemainingCost())));
@@ -81,7 +83,7 @@ public class VendingMachine {
         try {
             coinDispenser.calculateChange(changeInPennys());
             setDisplayMessage("Thanks for buying our product.");
-            coinDispenser.addNewCoins(insertedCoins);
+
             Product productFromStorage = storage.takeProductFromShelf(chosenShelfNumber);
             productDispenser.putPurchasedProductInDispenser(productFromStorage);
         }catch (NotEnoughCointToReturnChange ex){

@@ -105,4 +105,15 @@ public class CoinDispenser {
     public void addNewCoinToAvailable(Coin coin) {
         availableCoins.put(coin, availableCoins.get(coin)+1);
     }
+
+    public List<Coin> listAllCoins() {
+        List<Coin> coins = new ArrayList<>();
+        for (Map.Entry<Coin, Integer> coinIntegerEntry : availableCoins.entrySet()) {
+            for (int i = 0; i < coinIntegerEntry.getValue(); i++) {
+                coins.add(coinIntegerEntry.getKey());
+            }
+
+        }
+        return coins;
+    }
 }

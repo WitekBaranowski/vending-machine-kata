@@ -20,15 +20,7 @@ public class PriceChangeTest {
     @Rule
     public ExpectedException exception = ExpectedException.none();
 
-    @Test
-    public void testFindingProductPriceFromList(){
-        Map<ProductType, Price> priceList = new HashMap<>();
-        priceList.put(new ProductType(COKE), new Price(COKE_PRICE));
-        priceList.put(new ProductType(CHOCOLATE_BAR), new Price(CHOCOLATE_BAR_PRICE));
 
-        assertThat(priceList.get(new ProductType(COKE))).isEqualTo(new Price(COKE_PRICE));
-
-    }
     @Test
     public void testFindingProductPriceFromPriceList(){
         PriceList priceList = new PriceList();

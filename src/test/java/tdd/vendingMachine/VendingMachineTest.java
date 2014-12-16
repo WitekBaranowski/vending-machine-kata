@@ -221,6 +221,17 @@ public class VendingMachineTest {
         assertThat(coinDispenser.listAllCoins()).containsExactly(Coin.ONE_ZLOTY, Coin.ONE_ZLOTY, Coin.TEN_PENNYS, Coin.TEN_PENNYS);
 
     }
+    @Test
+    public void testMessageWhenChosenEmptyShelf(){
+        vendingMachine.enterShelfNumber(1);
+
+        String display = vendingMachine.showDisplay();
+
+        assertThat(display).isEqualTo("There are no products on shelf.");
+
+
+    }
+
 
 
 

@@ -36,6 +36,7 @@ public class VendingMachineTest {
         productDispenser = new ProductDispenser();
         coinDispenser = new CoinDispenser();
         priceList = new PriceList();
+        priceList.initDefaultPrices();
         vendingMachine = new VendingMachine(storage, productDispenser, coinDispenser, priceList);
 
     }

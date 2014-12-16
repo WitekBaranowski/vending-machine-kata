@@ -16,16 +16,9 @@ public class PriceList {
 
     public PriceList() {
         priceList = new HashMap<>();
-        initDefaultPrices();
-    }
-    public PriceList(boolean init) {
-        priceList = new HashMap<>();
-        if(init) {
-            initDefaultPrices();
-        }
     }
 
-    private void initDefaultPrices() {
+    public void initDefaultPrices() {
         setPriceForProductType(new ProductType(COKE), new Price(COKE_PRICE));
         setPriceForProductType(new ProductType(CHOCOLATE_BAR), new Price(CHOCOLATE_BAR_PRICE));
     }

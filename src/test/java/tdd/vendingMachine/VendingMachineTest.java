@@ -184,6 +184,8 @@ public class VendingMachineTest {
 
 
 
+
+
     private Product prepareCokeProduct() {
         ProductType productType = new ProductType(COKE);
         return new Product(productType);

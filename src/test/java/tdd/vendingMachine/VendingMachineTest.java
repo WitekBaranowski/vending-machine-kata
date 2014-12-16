@@ -126,12 +126,7 @@ public class VendingMachineTest {
     }
     @Test
     public void testChangeReturnForFiveZloty(){
-        vendingMachine.enterShelfNumber(2);
-        coinDispenser.setCoinAmountInDispenser(Coin.TWO_ZLOTY, 1);
-        coinDispenser.setCoinAmountInDispenser(Coin.ONE_ZLOTY, 1);
-        coinDispenser.setCoinAmountInDispenser(Coin.FIFTY_PENNYS, 1);
-        coinDispenser.setCoinAmountInDispenser(Coin.TWENTY_PENNYS, 1);
-        coinDispenser.setCoinAmountInDispenser(Coin.TEN_PENNYS, 1);
+        prepareSucesfullTransactionWithChange();
 
         vendingMachine.insertCoin(Coin.FIVE_ZLOTY);
 
@@ -178,16 +173,27 @@ public class VendingMachineTest {
 
 
     }
+    @Test
+    public void testMessageWhenUserPaidMoreThanProductCostAndCanReturnChange(){
+        prepareSucesfullTransactionWithChange();
+
+        vendingMachine.insertCoin(Coin.FIVE_ZLOTY);
+        String display = vendingMachine.showDisplay();
+
+        assertThat(display).isEqualTo("Thanks for buying our product.");
 
 
+    }
 
+    private void prepareSucesfullTransactionWithChange() {
+        vendingMachine.enterShelfNumber(2);
+        coinDispenser.setCoinAmountInDispenser(Coin.TWO_ZLOTY, 1);
+        coinDispenser.setCoinAmountInDispenser(Coin.ONE_ZLOTY, 1);
+        coinDispenser.setCoinAmountInDispenser(Coin.FIFTY_PENNYS, 1);
+        coinDispenser.setCoinAmountInDispenser(Coin.TWENTY_PENNYS, 1);
+        coinDispenser.setCoinAmountInDispenser(Coin.TEN_PENNYS, 1);
 
-
-
-
-
-
-
+    }
 
 
     private Product prepareCokeProduct() {

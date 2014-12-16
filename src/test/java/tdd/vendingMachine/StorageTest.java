@@ -34,7 +34,7 @@ public class StorageTest {
 
 
         exception.expect(StorageException.class);
-        exception.expectMessage("There is already mounted shelf at position: "+CHOCOLATE_BAR_SHELF_NUMBER);
+        exception.expectMessage("There is already mounted shelf at position: " + CHOCOLATE_BAR_SHELF_NUMBER);
 
         storage.mountNewShelfInStorage(CHOCOLATE_BAR_SHELF_NUMBER, chocoShelfToMount);
         storage.mountNewShelfInStorage(CHOCOLATE_BAR_SHELF_NUMBER, cokeShelfToMount);
@@ -54,6 +54,18 @@ public class StorageTest {
 
         assertThat(chocoShelfToMount.size()).isEqualTo(2);
 
+    }
+    @Test
+    public void testStorageExceptionIsThrownWhenTakingFromEmptyShelf(){
+        Storage storage = new Storage();
+        Shelf chocoShelfToMount = new Shelf();
+        storage.mountNewShelfInStorage(CHOCOLATE_BAR_SHELF_NUMBER, chocoShelfToMount);
+
+
+        exception.expect(StorageException.class);
+        exception.expectMessage("There are no products on shelf.");
+
+        storage.takeProductFromShelf(CHOCOLATE_BAR_SHELF_NUMBER);
 
 
 

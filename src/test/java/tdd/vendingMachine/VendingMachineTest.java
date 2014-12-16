@@ -21,6 +21,8 @@ public class VendingMachineTest {
 
     private CoinDispenser coinDispenser;
 
+    private PriceList priceList;
+
     @Before
     public void setUp() throws Exception {
 
@@ -33,7 +35,8 @@ public class VendingMachineTest {
         storage.mountNewShelfInStorage(2, shelf);
         productDispenser = new ProductDispenser();
         coinDispenser = new CoinDispenser();
-        vendingMachine = new VendingMachine(storage, productDispenser, coinDispenser);
+        priceList = new PriceList();
+        vendingMachine = new VendingMachine(storage, productDispenser, coinDispenser, priceList);
 
     }
 

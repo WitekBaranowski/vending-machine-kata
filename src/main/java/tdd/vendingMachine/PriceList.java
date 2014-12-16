@@ -5,18 +5,30 @@ import tdd.vendingMachine.exceptions.NoPriceForGivenProductException;
 import java.util.HashMap;
 import java.util.Map;
 
+import static tdd.vendingMachine.TestDataConstants.*;
+
 /**
  * Created by Witek on 2014-12-16.
  */
 public class PriceList {
 
-    Map<ProductType, Price> priceList = new HashMap<>();
+    private Map<ProductType, Price> priceList;
+
+    public PriceList() {
+        priceList = new HashMap<>();
+        initDefaultPrices();
+    }
+
+    private void initDefaultPrices() {
+        setPriceForProductType(new ProductType(COKE), new Price(COKE_PRICE));
+        setPriceForProductType(new ProductType(CHOCOLATE_BAR), new Price(CHOCOLATE_BAR_PRICE));
+    }
 
     public void setPriceForProductType(ProductType productType, Price price) {
         priceList.put(productType, price);
     }
 
-    public Price getPriceForProductType(ProductType productType) {
+    public Price getPriceForProductType(ProductType productType) throws NoPriceForGivenProductException{
         if(!priceList.containsKey(productType)){
             throw new NoPriceForGivenProductException();
         }

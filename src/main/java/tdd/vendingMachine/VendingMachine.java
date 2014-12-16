@@ -1,12 +1,13 @@
 package tdd.vendingMachine;
 
+import tdd.vendingMachine.exceptions.NoPriceForGivenProductException;
 import tdd.vendingMachine.exceptions.NotEnoughCointToReturnChange;
 import tdd.vendingMachine.exceptions.StorageException;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+
 import java.util.List;
-import java.util.Map;
+
 
 import static tdd.vendingMachine.TestDataConstants.*;
 
@@ -25,19 +26,18 @@ public class VendingMachine {
 
     private Price priceForSelectedProduct;
 
-    Map<ProductType, Price> priceList = new HashMap<>();
+    private PriceList priceList;
 
 
     private long amountInserted;
     private List<Coin> insertedCoins;
 
-    public VendingMachine(Storage storage, ProductDispenser productDispenser, CoinDispenser coinDispenser) {
+    public VendingMachine(Storage storage, ProductDispenser productDispenser, CoinDispenser coinDispenser, PriceList priceList) {
         this.storage = storage;
         this.productDispenser = productDispenser;
         this.coinDispenser = coinDispenser;
+        this.priceList = priceList;
         insertedCoins = new ArrayList<>();
-        priceList.put(new ProductType(COKE), new Price(COKE_PRICE));
-        priceList.put(new ProductType(CHOCOLATE_BAR), new Price(CHOCOLATE_BAR_PRICE));
     }
 
     public void enterShelfNumber(int shelfNumberEntered) {
@@ -51,13 +51,13 @@ public class VendingMachine {
             ProductType selectedProductType = storage.getSelectedProductType(chosenShelfNumber);
             loadProductPriceFromPriceList(selectedProductType);
             setDisplayMessage(priceForSelectedProduct.toString());
-        }catch (StorageException e){
+        }catch (StorageException | NoPriceForGivenProductException e){
             setDisplayMessage(e.getMessage());
         }
     }
 
-    private void loadProductPriceFromPriceList(ProductType selectedProductType) {
-        priceForSelectedProduct = priceList.get(selectedProductType);
+    private void loadProductPriceFromPriceList(ProductType selectedProductType) throws NoPriceForGivenProductException{
+        priceForSelectedProduct = priceList.getPriceForProductType(selectedProductType);
     }
 
     public String showDisplay() {

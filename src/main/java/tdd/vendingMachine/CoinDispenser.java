@@ -25,9 +25,6 @@ public class CoinDispenser {
         availableCoins.put(coin, amount);
     }
 
-    public CoinDispenser(Map<Coin, Integer> availableCoins) {
-        this.availableCoins = availableCoins;
-    }
 
     public List<Coin> returnChange() {
 

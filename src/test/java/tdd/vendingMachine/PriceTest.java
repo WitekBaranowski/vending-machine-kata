@@ -1,35 +1,41 @@
 package tdd.vendingMachine;
 
 
+
+import static junitparams.JUnitParamsRunner.*;
+
+import junitparams.JUnitParamsRunner;
+import junitparams.Parameters;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static tdd.vendingMachine.TestDataConstants.COKE;
 
 
+@RunWith(JUnitParamsRunner.class)
 public class PriceTest {
 
 
-
     @Test
-    public void tesPriceDisplayNoDecimal(){
-        Price price = new Price(100);
+    @Parameters(method = "providePrices")
+    public void tesPriceDisplayNoDecimal(Price price, String expPriceToDisplay){
 
         String priceToDisplay = price.toString();
 
-        assertThat(priceToDisplay).isEqualTo("1 zł");
+        assertThat(priceToDisplay).isEqualTo(expPriceToDisplay);
 
 
     }
-    @Test
-    public void tesPriceDisplayDecimal(){
-        Price price = new Price(120);
-
-        String priceToDisplay = price.toString();
-
-        assertThat(priceToDisplay).isEqualTo("1,2 zł");
-
+    public static Object[] providePrices() {
+        return $(
+                $(new Price(100), "1 zł"),
+                $(new Price(120), "1,2 zł"),
+                $(new Price(125), "1,25 zł"),
+                $(new Price(80), "0,8 zł"),
+                $(new Price(0), "0 zł")
+        );
     }
+
 
 
 }

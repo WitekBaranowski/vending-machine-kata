@@ -38,6 +38,7 @@ public class VendingMachineTest {
         shelf.addProduct(product);
 
         Storage storage = new Storage();
+        storage.mountNewShelfInStorage(1, new Shelf());
         storage.mountNewShelfInStorage(2, shelf);
 
         productDispenser = new ProductDispenser();

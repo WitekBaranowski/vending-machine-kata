@@ -48,6 +48,9 @@ public class Storage {
             throw new StorageException(String.format("There is no shelf under number %d.",shelfNumber));
         }
         Shelf shelf = shelfs.get(shelfNumber);
+        if(shelf.size() == 0){
+            throw new StorageException("There are no products on shelf.");
+        }
         return  shelf.getProductType();
     }
 }

@@ -36,21 +36,30 @@ public class Storage {
 
 
     public Product takeProductFromShelf(int shelfNumber) {
-        if (!shelfs.containsKey(shelfNumber)) {
-            throw new StorageException(String.format("There is no shelf under number %d.",shelfNumber));
-        }
-        Shelf shelf = shelfs.get(shelfNumber);
+        Shelf shelf = loadShelfFromStorage(shelfNumber);
         return  shelf.takeProduct();
     }
 
-    public ProductType getSelectedProductType(int shelfNumber) {
+    public ProductType loadShelfProductType(int shelfNumber) {
+        Shelf shelf = loadShelfFromStorage(shelfNumber);
+        verifyThatShelfIsNotEmpty(shelf);
+        return  shelf.getProductType();
+    }
+
+    private Shelf loadShelfFromStorage(int shelfNumber) {
+        verifyThatShelfExist(shelfNumber);
+        return shelfs.get(shelfNumber);
+    }
+
+    private void verifyThatShelfExist(int shelfNumber) {
         if (!shelfs.containsKey(shelfNumber)) {
             throw new StorageException(String.format("There is no shelf under number %d.",shelfNumber));
         }
-        Shelf shelf = shelfs.get(shelfNumber);
+    }
+
+    private void verifyThatShelfIsNotEmpty(Shelf shelf) {
         if(shelf.size() == 0){
             throw new StorageException("There are no products on shelf.");
         }
-        return  shelf.getProductType();
     }
 }

@@ -47,7 +47,7 @@ public class VendingMachine {
 
     private void setupTradeTransaction() throws StorageException {
         try {
-            ProductType selectedProductType = storage.getSelectedProductType(chosenShelfNumber);
+            ProductType selectedProductType = storage.loadShelfProductType(chosenShelfNumber);
             loadProductPriceFromPriceList(selectedProductType);
             setDisplayMessage(priceForSelectedProduct.toString());
         }catch (StorageException | NoPriceForGivenProductException e){

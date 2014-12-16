@@ -80,6 +80,7 @@ public class VendingMachine {
     private void processTransaction() {
         try {
             coinDispenser.calculateChange(changeInPennys());
+            setDisplayMessage("Thanks for buying our product.");
             coinDispenser.addNewCoins(insertedCoins);
             Product productFromStorage = storage.takeProductFromShelf(chosenShelfNumber);
             productDispenser.putPurchasedProductInDispenser(productFromStorage);
